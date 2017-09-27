@@ -1,26 +1,45 @@
-<body style="background-color: black;">
-	<p id="demo" style="font-size:300%; color:blue;"></p>
+
+
+<h1>CountdownParty</h1>
+
+<h2>Hi, this is a count down for the internship xD, feel free to make commit to make this site amazing.</h2>
+<h2>Please feel free to commit to this site to make is amazing.	</h2>
+
+
+<body >
+	<p id="demo" style="font-size:150%; color:blue;"></p>
 </body>
 
 <script>
 
 var countDownDate = new Date("Dec 23, 2017 18:00:00").getTime();
-var x = setInterval(function() {
-	var now = new Date().getTime();
-	var start = new Date("Aug 7, 2017 9:00:00").getTime();
-	var distance = countDownDate - now;
-	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	var weeks = Math.floor(days / 7);
-	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-	var pass = Math.ceil((now - start) / (1000 * 60 * 60 * 24) / 7);
 
-	document.getElementById("demo").innerHTML = weeks + "w </br>" + days + "d " + hours + "h " + minutes + "m " + seconds + "s </br>" + pass;
-	if (distance < 0) {
+var x = setInterval(function() {
+
+	var currentDate = new Date().getTime();
+	var firstDate = new Date("Aug 7, 2017 9:00:00").getTime();
+	var daysToGo = countDownDate - currentDate;
+	
+	var noOfDaysToGo = Math.floor(daysToGo / (1000 * 60 * 60 * 24));
+	var noOfWeeksToGo = Math.floor(noOfDaysToGo / 7);
+	var noOfHoursToGo = Math.floor((daysToGo % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	var noOfMinutesToGo = Math.floor((daysToGo % (1000 * 60 * 60)) / (1000 * 60));
+	var noOfSecondsToGo = Math.floor((daysToGo % (1000 * 60)) / 1000);
+	
+	var noOfWeeksCompeleted = Math.ceil((currentDate - firstDate) / (1000 * 60 * 60 * 24) / 7);
+
+	document.getElementById("demo").innerHTML = 
+	"</br>Congradulation, you have completed " + noOfWeeksCompeleted + " Weeks! <br>" +
+	"</br> The remaining time are: </br>" +
+	noOfWeeksToGo + " Weeks To Go </br>" +
+	noOfDaysToGo + " days " + noOfHoursToGo + " hours " + noOfMinutesToGo + " minutes " + noOfSecondsToGo + " seconds To Go</br>" 
+	;
+	
+	if (daysToGo < 0) {
 		clearInterval(x);
 		document.getElementById("demo").innerHTML = "EXPIRED";
 	}
-}, 1000);
+	
+}, 100);
 
 </script>
